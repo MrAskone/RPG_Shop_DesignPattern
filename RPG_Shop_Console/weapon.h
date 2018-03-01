@@ -15,15 +15,18 @@ class Weapon
 public:
     Weapon();
 
-    virtual string getName() const
+    virtual string getWeaponType() const
     {
-        return m_name;
+        return m_weaponType;
     }
 
     virtual vector<int> getAttributes() const
     {
         return m_attributes;
     }
+
+    virtual void setDps(int dps) { m_dps = dps; }
+
     virtual int getDps() const = 0;
     virtual int getPrice() const = 0;
     virtual ~Weapon()
@@ -40,7 +43,7 @@ public:
     virtual string examineWeapon() const;
 
 protected:
-    string m_name;
+    string m_weaponType;
     vector<int> m_attributes;
     int m_dps;
     int m_price;
@@ -108,13 +111,13 @@ public:
         StaffType
     };
 
-    static unique_ptr<Weapon> baseWeapon(WeaponType weaponType)
+    static Weapon* baseWeapon(WeaponType weaponType)
     {
         switch (weaponType) {
-        case DaggerType:    return make_unique<Dagger>();
-        case AxeType:       return make_unique<Axe>();
-        case SwordType:     return make_unique<Sword>();
-        case StaffType:     return make_unique<Staff>();
+        case DaggerType:    return new Dagger();
+        case AxeType:       return new Axe();
+        case SwordType:     return new Sword();
+        case StaffType:     return new Staff();
         }
         throw "invalid weapon type.";
     }

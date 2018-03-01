@@ -2,7 +2,7 @@
 
 Weapon::Weapon()
 {
-    m_name = "unidentified weapon";
+    m_weaponType = "unidentified weapon";
     m_price = 0;
     m_dps = 0;
     m_attributes = {0, 0, 0, 0, 0, 0};
@@ -30,7 +30,7 @@ string Weapon::examineWeapon() const
         case 3: description += "blazing "; break;
         case 4: description += "SunFire "; break;
         default: description = description; break;
-        }
+        } break;
     case 2: switch (getAttributes()[2]){
         case 0: description = description; break;
         case 1: description += "breezy "; break;
@@ -38,7 +38,7 @@ string Weapon::examineWeapon() const
         case 3: description += "cyclonic "; break;
         case 4: description += "Kamikaze "; break;
         default: description = description; break;
-        }
+        } break;
     case 3: switch (getAttributes()[2]){
         case 0: description = description; break;
         case 1: description += "muddy "; break;
@@ -46,7 +46,7 @@ string Weapon::examineWeapon() const
         case 3: description += "seismic "; break;
         case 4: description += "Earth-Shattering "; break;
         default: description = description; break;
-        }
+        } break;
     case 4: switch (getAttributes()[2]){
         case 0: description = description; break;
         case 1: description += "breezy "; break;
@@ -54,24 +54,24 @@ string Weapon::examineWeapon() const
         case 3: description += "cyclonic "; break;
         case 4: description += "Kamikaze "; break;
         default: description = description; break;
-        }
+        } break;
     default: description = description; break;
     }
 
-    description += (getName() + " which deals " + to_string(getDps()) + " damage per second.\n");
+    description += (getWeaponType() + " which deals " + to_string(getDps()) + " damage per second.\n");
     return description;
 }
 
 Dagger::Dagger()
 {
-    m_name = "dagger";
+    m_weaponType = "dagger";
     m_price = 100;
     m_dps = 10;
 }
 
 Axe::Axe()
 {
-    m_name = "axe";
+    m_weaponType = "axe";
     m_price = 200;
     m_dps = 15;
 }
@@ -79,7 +79,7 @@ Axe::Axe()
 
 Sword::Sword()
 {
-    m_name = "sword";
+    m_weaponType = "sword";
     m_price = 150;
     m_dps = 12;
 }
@@ -88,7 +88,7 @@ Sword::Sword()
 
 Staff::Staff()
 {
-    m_name = "staff";
+    m_weaponType = "staff";
     m_price = 150;
     m_dps = 8;
 }
